@@ -69,7 +69,5 @@ ENV CONDA_OVERRIDE_CUDA=10.2
 ADD . environment.yml
 
 RUN conda update -n base -c defaults conda && \
-    conda info && \
-    conda install mamba -n base -c conda-forge && \
-    mamba install -y -n base -f environment.yml && \
-    mamba clean --all --yes
+    conda env create -y -n base -f environment.yml && \
+    conda clean --all --yes
