@@ -4,6 +4,20 @@ FROM nvidia/cuda:10.2-devel
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC
 
+# nvidia/cuda repos are currently rotating their gpg keys
+# https://forums.developer.nvidia.com/t/notice-cuda-linux-repository-key-rotation/212771/8
+ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=DontWarn
+ENV DISTRO=ubuntu1804
+ENV ARCH=x86_64
+RUN sh -c 'echo "APT { Get { AllowUnauthenticated \"1\"; }; };" > /etc/apt/apt.conf.d/99allow_unauth'
+RUN apt -o Acquire::AllowInsecureRepositories=true -o Acquire::AllowDowngradeToInsecureRepositories=true update
+RUN apt-get install -y curl wget
+RUN apt-key del 7fa2af80
+RUN wget https://developer.download.nvidia.com/compute/cuda/repos/$DISTRO/$ARCH/cuda-keyring_1.0-1_all.deb
+RUN dpkg -i cuda-keyring_1.0-1_all.deb
+RUN rm -f /etc/apt/sources.list.d/cuda.list /etc/apt/apt.conf.d/99allow_unauth cuda-keyring_1.0-1_all.deb
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A4B469963BF863CC F60F4B3D7FA2AF80
+
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         ca-certificates \
