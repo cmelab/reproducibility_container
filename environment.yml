@@ -5,6 +5,7 @@ channels:
 dependencies:
   - cassandra=1.2.5
   - constrainmol
+  - cudatoolkit=10.2
   - ele
   - foyer>=0.9.4
   - freud
@@ -12,7 +13,7 @@ dependencies:
   - gromacs=2020.6
   - gsd
   - h5py
-  - hoomd>=3=*gpu*
+  - hoomd=3*=*gpu*
   - jupyter
   - jinja2
   - lammps
