@@ -12,7 +12,7 @@ dependencies:
   - gromacs=2020.6
   - gsd
   - h5py
-  - hoomd=*=*gpu*
+  - hoomd=3=*gpu*
   - jupyter
   - jinja2
   - lammps
