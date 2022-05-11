@@ -1,22 +1,15 @@
 name: reproducibility
 channels:
   - conda-forge
-  - bioconda
 dependencies:
-  - cassandra=1.2.5
   - constrainmol
-  - cudatoolkit=10.2
   - ele
   - foyer>=0.9.4
   - freud
   - gmso
-  - gromacs=2020.6
   - gsd
   - h5py
-  - hoomd=3*=*gpu*
-  - jupyter
   - jinja2
-  - lammps
   - matplotlib
   - mbuild>=0.13.0
   - mdtraj
@@ -28,12 +21,9 @@ dependencies:
   - panedr
   - parmed>=3.4.3
   - pymbar
-  - pytest
   - python=3.8
   - rdkit
   - scipy
-  - seaborn
   - signac
-  - signac-dashboard
   - signac-flow
   - unyt
