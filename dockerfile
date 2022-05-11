@@ -69,5 +69,5 @@ ENV CONDA_OVERRIDE_CUDA=10.2
 ADD . environment.yml
 
 RUN conda update -n base -c defaults conda && \
-    conda env create -y -n base -f environment.yml && \
+    conda env create -n base -f environment.yml && \
     conda clean --all --yes
